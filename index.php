@@ -1,3 +1,4 @@
+<!-- Codigo PHP -->
 <?php
 // Definir la constante con la URL de la API
 const API_URL = "https://whenisthenextmcufilm.com/api";
@@ -30,6 +31,9 @@ curl_close($ch);
 // Configurar la localización para mostrar meses en español
 setlocale(LC_TIME, "es_ES.UTF-8");
 ?>
+
+
+<!-- Codigo HTML -->
 <main>
     <!-- Tarjeta para mostrar los datos de la película -->
     <div class="card">
@@ -75,6 +79,7 @@ setlocale(LC_TIME, "es_ES.UTF-8");
     </div>
 </main>
 
+<!-- Hoja estilo -->
 <style>
     /* Estilo general de la página */
     :root {
