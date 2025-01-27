@@ -1,4 +1,3 @@
-<!-- Codigo PHP -->
 <?php
 // Definir la constante con la URL de la API
 const API_URL = "https://whenisthenextmcufilm.com/api";
@@ -31,10 +30,7 @@ curl_close($ch);
 // Configurar la localización para mostrar meses en español
 setlocale(LC_TIME, "es_ES.UTF-8");
 ?>
-
-<!-- Codigo HTML -->
 <main>
-    <h1 class="title_page">La próxima película Marvel</h1>
     <!-- Tarjeta para mostrar los datos de la película -->
     <div class="card">
         <section>
@@ -51,10 +47,23 @@ setlocale(LC_TIME, "es_ES.UTF-8");
             </h1>
             <p>
                 <!-- Mostrar la fecha de estreno en formato español -->
-                <?= isset($data["release_date"]) ? strftime("%d de %B de %Y", strtotime($data["release_date"])) : "Fecha no disponible"; ?>
+                <?php
+                if (isset($data["release_date"])) {
+                    // Usamos IntlDateFormatter para formatear la fecha
+                    $date = new DateTime($data["release_date"]);
+                    $fmt = new IntlDateFormatter(
+                        'es_ES',
+                        IntlDateFormatter::LONG,
+                        IntlDateFormatter::NONE
+                    );
+                    echo $fmt->format($date);
+                } else {
+                    echo "Fecha no disponible";
+                }
+                ?>
                 <span>
                     <!-- Mostrar los días restantes para el estreno, si están disponibles -->
-                    <?= isset($data["days_until"]) ? htmlspecialchars($data["days_until"] . " días pendientes") : ""; ?>
+                    <?= isset($data["days_until"]) ? htmlspecialchars($data["days_until"] . " días pendientes", ENT_QUOTES, 'UTF-8') : ""; ?>
                 </span>
             </p>
             <br>
@@ -66,7 +75,6 @@ setlocale(LC_TIME, "es_ES.UTF-8");
     </div>
 </main>
 
-<!-- Codigo estilos -->
 <style>
     /* Estilo general de la página */
     :root {
@@ -108,12 +116,6 @@ setlocale(LC_TIME, "es_ES.UTF-8");
         font-size: 1.5rem;
         margin: 0 0 10px;
         color: rgb(15, 14, 14);
-    }
-
-    .title_page {
-        font-size: 1.5rem;
-        margin: 0 0 10px;
-        color: rgb(255, 255, 255);
     }
 
     /* Estilo para el párrafo */
