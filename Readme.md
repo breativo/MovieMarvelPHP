@@ -7,7 +7,7 @@
 
 Este proyecto es una `aplicación web en PHP` que consume una API externa para mostrar información sobre la próxima película del Universo Cinematográfico de Marvel (MCU). La aplicación recupera datos como el título de la película, su fecha de estreno, el póster promocional, una descripción y los días restantes para el estreno. La interfaz es sencilla y está diseñada para proporcionar una experiencia visual clara y atractiva.
 <div style="text-align: center;">
-  <img src="MovieMarvel.png" alt="Api Movie Marvel" style="max-width: 100%; height: auto;">
+  <img src="MovieMarvel.png" alt="Api Movie Marvel" style="width: 50%; height: auto;">
 </div>
 
 ### **Requisitos previos**
