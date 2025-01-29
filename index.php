@@ -1,6 +1,6 @@
 <?php
 // Incluir el archivo con la clase NextMovie
-require_once 'NextMovie.php';
+require_once 'ApiMoviMarvel/NextMovie.php';
 
 // Obtener los datos de la película desde la API
 $data = MovieAPI::fetchMovieData();
@@ -21,7 +21,7 @@ if (!empty($data)) {
     <title>Próxima Película Marvel</title>
 
     <!-- Cargar los estilos genrales del fichero style.css -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ApiMoviMarvel/style.css">
 
     <!-- Cargar Font Awesome para los iconos del botón de cambio de tema -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -68,7 +68,7 @@ if (!empty($data)) {
 
 
 
-    <script src="temaClaroOscuro.js"></script>
+    <script src="ApiMoviMarvel/temaClaroOscuro.js"></script>
 
 </body>
 
