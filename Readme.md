@@ -77,11 +77,11 @@ php -S localhost:8000
 ## **Capturas de pantalla**
 
 <div style="text-align: center;">
-  <img src="TemaClaro.png" alt="Api Movie Marvel" style="margin: auto; width: 50%; height: auto;">
+  <img src="TemaClaro.png" alt="Api Movie Marvel" style="margin: auto; width: 100%; height: auto;">
 </div>
 </br>
 <div style="text-align: center;">
-  <img src="TemaOscuro.png" alt="Api Movie Marvel" style="margin: auto; width: 50%; height: auto;">
+  <img src="TemaOscuro.png" alt="Api Movie Marvel" style="margin: auto; width: 100%; height: auto;">
 </div>
 
 ## **URL del proyecto**
