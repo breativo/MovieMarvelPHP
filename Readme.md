@@ -3,22 +3,34 @@
 #### Autor: breativo
 
 # Movie Marvel API
-### **Descripción**
+![PHP](https://img.shields.io/badge/PHP-8.4-blue)
 
-Este proyecto es una `aplicación web en PHP` que consume una API externa para mostrar información sobre la próxima película del Universo Cinematográfico de Marvel (MCU). La aplicación recupera datos como el título de la película, su fecha de estreno, el póster promocional, una descripción y los días restantes para el estreno. La interfaz es sencilla y está diseñada para proporcionar una experiencia visual clara y atractiva.
-<div style="text-align: center;">
-  <img src="MovieMarvel.png" alt="Api Movie Marvel" style="width: 50%; height: auto;">
-</div>
 
-### **Requisitos previos**
+## **Descripción**
+
+Este proyecto es una aplicación web en PHP que consume una API externa para mostrar información sobre la próxima película del Universo Cinematográfico de Marvel.
+
+Se muestra:
+
+- **Título de la película.**
+- **Fecha de estreno** (formato español).
+- **Póster promocional.**
+- **Descripción breve de la película.**
+- **Días restantes hasta el estreno.**
+- **Modo oscuro y modo claro**, que se puede alternar con un botón.  
+
+La interfaz es sencilla y amigable, con un diseño centrado en la accesibilidad.
+
+
+## **Requisitos previos**
 
 - Tener instalado `PHP 8.1 o superior.`
 - Asegurarse de que las `extensiones curl e intl` están habilitadas.
 - Tener `acceso a internet` para conectar con la API externa.
 
-### **Conexión a la API**
+## **Conexión a la API**
 
-Este código inicializa una conexión cURL para obtener datos de la API externa:
+Este código inicializa una **conexión cURL para obtener datos de la API externa**:
 
 ````PHP
 const API_URL = "https://whenisthenextmcufilm.com/api";
@@ -37,25 +49,23 @@ if ($result === false) {
 curl_close($ch);
 ````
 
-### **Formateo de la fecha**
+## **Formateo de la fecha**
 
-El formateo de la fecha se realiza utilizando IntlDateFormatter para mostrarla en formato español:
+El **formateo de la fecha** se realiza utilizando **IntlDateFormatter** para mostrarla en formato español:
 
 ````PHP
+<?php
 if (isset($data["release_date"])) {
     $date = new DateTime($data["release_date"]);
-    $fmt = new IntlDateFormatter(
-        'es_ES',
-        IntlDateFormatter::LONG,
-        IntlDateFormatter::NONE
-    );
-    echo $fmt->format($date);
+    echo $date->format('d F Y');  // Ejemplo: "29 enero 2025"
 } else {
     echo "Fecha no disponible";
 }
+?>
+
 ````
 
-### **Iniciar el servidor**
+## **Iniciar el servidor**
 
 Para probar la aplicación localmente, utiliza el comando:
 
@@ -64,15 +74,19 @@ Para probar la aplicación localmente, utiliza el comando:
 php -S localhost:8000
 ````
 
-### **Capturas de pantalla**
+## **Capturas de pantalla**
 
+<div style="text-align: center;">
+  <img src="TemaClaro.png" alt="Api Movie Marvel" style="margin: auto; width: 50%; height: auto;">
+</div>
+</br>
+<div style="text-align: center;">
+  <img src="TemaOscuro.png" alt="Api Movie Marvel" style="margin: auto; width: 50%; height: auto;">
+</div>
 
+## **URL del proyecto**
 
-### **URL del proyecto**
-
-https://moviemarvelphp.zeabur.app/
-
-
+[URL del proyecto](https://moviemarvelphp.zeabur.app/)
 
 ## ¡Apóyame! 
 #### Puedes apoyar mi trabajo haciendo "☆ Star" en el repositorio. ¡Gracias!
