@@ -86,7 +86,7 @@ php -S localhost:8000
 
 ## **URL del proyecto**
 
-[URL del proyecto](https://moviemarvelphp.zeabur.app/)
+[URL del proyecto](https://moviemarvel.zeabur.app/)
 
 ## ¡Apóyame! 
 #### Puedes apoyar mi trabajo haciendo "☆ Star" en el repositorio. ¡Gracias!
