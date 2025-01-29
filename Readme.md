@@ -3,7 +3,6 @@
 #### Autor: breativo
 
 # Movie Marvel API
-![PHP](https://img.shields.io/badge/PHP-8.4-blue)
 
 
 ## **Descripción**
@@ -33,20 +32,24 @@ La interfaz es sencilla y amigable, con un diseño centrado en la accesibilidad.
 Este código inicializa una **conexión cURL para obtener datos de la API externa**:
 
 ````PHP
-const API_URL = "https://whenisthenextmcufilm.com/api";
-$ch = curl_init(API_URL);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-$result = curl_exec($ch);
-if ($result === false) {
-    echo "<p>Error al obtener los datos. Por favor, intenta más tarde.</p>";
-    $data = [];
-} else {
-    $data = json_decode($result, true);
+class MovieAPI
+{
+    private const API_URL = "https://whenisthenextmcufilm.com/api";
+
+    public static function fetchMovieData(): array
+    {
+        $ch = curl_init(self::API_URL);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+
+        $result = curl_exec($ch);
+        curl_close($ch);
+
+        return $result ? json_decode($result, true) : [];
+    }
 }
-curl_close($ch);
 ````
 
 ## **Formateo de la fecha**
@@ -54,14 +57,20 @@ curl_close($ch);
 El **formateo de la fecha** se realiza utilizando **IntlDateFormatter** para mostrarla en formato español:
 
 ````PHP
-<?php
-if (isset($data["release_date"])) {
-    $date = new DateTime($data["release_date"]);
-    echo $date->format('d F Y');  // Ejemplo: "29 enero 2025"
-} else {
-    echo "Fecha no disponible";
+class DateFormatter
+{
+    public static function formatDate($date): string
+    {
+        $dateTime = new DateTime($date);
+        $formatter = new IntlDateFormatter(
+            'es_ES',
+            IntlDateFormatter::LONG,
+            IntlDateFormatter::NONE
+        );
+
+        return $formatter->format($dateTime);
+    }
 }
-?>
 
 ````
 
@@ -77,11 +86,11 @@ php -S localhost:8000
 ## **Capturas de pantalla**
 
 <div style="text-align: center;">
-  <img src="TemaClaro.png" alt="Api Movie Marvel" style="margin: auto; width: 100%; height: auto;">
+  <img src="img/TemaClaro.png" alt="Api Movie Marvel" style="margin: auto; width: 100%; height: auto;">
 </div>
 </br>
 <div style="text-align: center;">
-  <img src="TemaOscuro.png" alt="Api Movie Marvel" style="margin: auto; width: 100%; height: auto;">
+  <img src="img/TemaOscuro.png" alt="Api Movie Marvel" style="margin: auto; width: 100%; height: auto;">
 </div>
 
 ## **URL del proyecto**
